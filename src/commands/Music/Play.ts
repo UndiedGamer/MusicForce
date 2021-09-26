@@ -16,7 +16,7 @@ export class PlayCommand extends SubCommandPluginCommand {
 			return reply(message, 'You are not in my voice channel!');
 		if (args.finished) return reply(message, 'You have to specify the song!');
 		const query = await args.rest('string');
-		const queue = this.container.client.player.createQueue(message.guild, {
+		const queue = this.container.player.createQueue(message.guild, {
 			metadata: {
 				channel: message.channel
 			}
@@ -29,7 +29,7 @@ export class PlayCommand extends SubCommandPluginCommand {
 			return await reply(message, { content: 'Could not join your voice channel!' });
 		}
 
-		const track = await this.container.client.player
+		const track = await this.container.player
 			.search(query, {
 				requestedBy: message.author
 			})

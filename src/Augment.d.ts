@@ -1,7 +1,7 @@
 import type { Player } from 'discord-player';
 
-declare module 'discord.js' {
-	interface Client {
+declare module '@sapphire/pieces' {
+	interface Container {
 		player: Player;
 	}
 }

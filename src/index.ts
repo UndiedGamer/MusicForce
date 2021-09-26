@@ -1,5 +1,5 @@
 import './lib/setup';
-import { LogLevel, SapphireClient } from '@sapphire/framework';
+import { container, LogLevel, SapphireClient } from '@sapphire/framework';
 import { Player } from 'discord-player';
 import { registerPlayerEvents } from './events';
 
@@ -39,5 +39,5 @@ const main = async () => {
 };
 
 main();
-client.player = new Player(client);
-registerPlayerEvents(client.player);
+container.player = new Player(client);
+registerPlayerEvents(container.player);
