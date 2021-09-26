@@ -1,0 +1,18 @@
+# Ignore a blackhole and the folder for development
+node_modules/
+.vs/
+.idea/
+*.iml
+
+# Environment variables
+.DS_Store
+
+dist/
+
+# Ignore heapsnapshot and log files
+*.heapsnapshot
+*.log
+
+# Environment variables
+.env.*
+.env
