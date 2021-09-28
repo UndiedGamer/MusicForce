@@ -30,8 +30,10 @@
     "@sapphire/ts-config": "^3.0.0",
     "@types/node": "^16.7.10",
     "@types/ws": "^7.4.7",
+    "concurrently": "^6.2.1",
     "esbuild": "^0.13.2",
     "ffmpeg-static": "^4.4.0",
+    "nodemon": "^2.0.13",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.3.2",
     "tsc-watch": "^4.5.0",
@@ -40,9 +42,10 @@
   "scripts": {
     "build": "node ./scripts/build.mjs",
     "watch": "node ./scripts/watch.mjs",
-    "start": "node ./scripts/clean.mjs && yarn format && yarn build && node --enable-source-maps .",
+    "start": "concurrently \"yarn:lintwatch\" \"yarn:watch\" \"nodemon\"",
     "dev": "run-s build start",
     "watch:start": "tsc-watch --onSuccess \"node ./dist/index.js\"",
+    "lintwatch": "onchange \"src/**/*.ts\" -- yarn format",
     "format": "prettier --write \"src/**/*.ts\""
   },
   "prettier": "@sapphire/prettier-config",
